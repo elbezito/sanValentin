@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>San Valentín</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-image: url('./38030.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+            color: #fff;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            flex-direction: column;
+            overflow-x: hidden;
+            position: relative;
+        }
+        .heart-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://www.transparenttextures.com/patterns/hearts.png');
+            opacity: 0.2;
+            z-index: 0;
+        }
+        .card {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            max-width: 90%;
+            position: relative;
+            z-index: 2;
+        }
+        h1 {
+            font-size: 2rem;
+        }
+        .buttons {
+            margin-top: 20px;
+        }
+        button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 1rem;
+            margin: 10px;
+        }
+        .yes {
+            background: #ff4d6d;
+            color: white;
+        }
+        .no {
+            background: #ddd;
+            color: black;
+        }
+        .heart {
+            font-size: 3rem;
+            animation: heartbeat 1.5s infinite;
+        }
+        @keyframes heartbeat {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+            100% { transform: scale(1); }
+        }
+        .photo-frame {
+            position: absolute;
+            width: 120px;
+            height: 140px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+            padding: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+        .photo-frame img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-bottom: 10px solid white;
+        }
+        .photo1 { top: 20%; left: 15%; transform: rotate(-10deg); }
+        .photo2 { top: 20%; right: 15%; transform: rotate(10deg); }
+        .photo3 { bottom: 20%; left: 15%; transform: rotate(10deg); }
+        .photo4 { bottom: 20%; right: 15%; transform: rotate(-10deg); }
+    </style>
+</head>
+<body>
+    <div class="heart-bg"></div>
+    <div class="card">
+        <div class="heart">❤️</div>
+        <h1 id="mensaje">¿Quieres ser mi San Valentín? 💕</h1>
+        <div class="buttons">
+            <button class="yes" onclick="aceptar()">Sí</button>
+            <button class="no" onclick="rechazar()">No</button>
+        </div>
+    </div>
+    <div class="photo-frame photo1"><img src="./WhatsApp Image 2023-09-15 at 15.15.23 (3).jpeg" alt="Foto 1"></div>
+    <div class="photo-frame photo2"><img src="./WhatsApp Image 2023-09-15 at 15.15.24.jpeg" alt="Foto 2"></div>
+    <div class="photo-frame photo3"><img src="./WhatsApp Image 2025-02-11 at 11.08.39 PM.jpeg" alt="Foto 3"></div>
+    <div class="photo-frame photo4"><img src="./WhatsApp Image 2025-02-11 at 11.08.40 PM.jpeg" alt="Foto 4"></div>
+    <script>
+        let intentos = 0;
+        function aceptar() {
+            document.getElementById("mensaje").textContent = "¡Ya sabía que querías, mi amor! Nos vemos el 14 con nuestra cita ❤️";
+            document.querySelector(".yes").style.display = "none";
+            document.querySelector(".no").style.display = "none";
+            intentos = 0;
+        }
+        function rechazar() {
+            let mensajes = [
+                "¿Seguro te equivocaste? Vuelve a elegir 😏",
+                "Oye, no seas mala, dale 😘",
+                "Ya basta, no es gracioso, me lastimas 💔"
+            ];
+            if (intentos < mensajes.length) {
+                document.getElementById("mensaje").textContent = mensajes[intentos];
+                intentos++;
+            } else {
+                intentos = 0;
+                document.getElementById("mensaje").textContent = "¿Quieres ser mi San Valentín? 💕";
+            }
+        }
+    </script>
+</body>
+</html>
